@@ -1,4 +1,5 @@
 import React from "react";
+import { St } from "./TodoListStyle";
 
 // Todo 아이템 타입 정의
 interface TodoItem {
@@ -70,24 +71,18 @@ const TodoList: React.FC<TodoListProps> = ({
   };
 
   return (
-    <div className="todo-container" key={item.id}>
-      <h2 className="todo-title">{item.title}</h2>
-      <div className="todo-content">{item.content}</div>
-      <div className="btns">
-        <button className="del-btn" onClick={() => clickDelBtnHandler(item.id)}>
-          삭제하기
-        </button>
+    <St.TodoContainer key={item.id}>
+      <St.TodoTitle>{item.title}</St.TodoTitle>
+      <St.TodoContent>{item.content}</St.TodoContent>
+      <St.BtnDiv>
+        <St.DelBtn onClick={() => clickDelBtnHandler(item.id)}>삭제하기</St.DelBtn>
         {isDone ? (
-          <button className="done-btn" onClick={() => clickCancelBtnHandler(item.id)}>
-            취소
-          </button>
+          <St.DoneBtn onClick={() => clickCancelBtnHandler(item.id)}>취소</St.DoneBtn>
         ) : (
-          <button className="done-btn" onClick={() => clickDoneBtnHandler(item.id)}>
-            완료
-          </button>
+          <St.DoneBtn onClick={() => clickDoneBtnHandler(item.id)}>완료</St.DoneBtn>
         )}
-      </div>
-    </div>
+      </St.BtnDiv>
+    </St.TodoContainer>
   );
 };
 

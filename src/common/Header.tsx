@@ -1,13 +1,14 @@
 import React from "react";
+import { St } from "./HeaderStyle";
 
 function Header() {
   return (
-    <header>
+    <St.Header>
       <ul>
-        <li className="title">Todos</li>
-        <li className="sub-title">React TypeScript Project</li>
+        <St.Title>Todos</St.Title>
+        <St.SubTitle>React TypeScript Project</St.SubTitle>
       </ul>
-    </header>
+    </St.Header>
   );
 }
 

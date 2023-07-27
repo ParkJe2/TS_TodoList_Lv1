@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { nanoid } from "nanoid";
+import { St } from "./FormStyle";
 
 // Todo 아이템 타입 정의
 interface TodoItem {
@@ -52,20 +53,17 @@ const Form: React.FC<FormProps> = ({ todos, setTodos }) => {
   };
 
   return (
-    <form className="add-form">
-      <div className="group">
-        <input value={title} placeholder="제목을 입력해주세요" onChange={titleChangeHandler} />
-        <input
+    <St.AddForm>
+      <St.Group>
+        <St.Input value={title} placeholder="제목을 입력해주세요" onChange={titleChangeHandler} />
+        <St.Input
           value={content}
-          className="input-content"
           placeholder="내용을 입력해주세요"
           onChange={contentChangeHandler}
         />
-        <button className="add-btn" onClick={clickAddBtnHandler}>
-          추가하기
-        </button>
-      </div>
-    </form>
+        <St.AddBtn onClick={clickAddBtnHandler}>추가하기</St.AddBtn>
+      </St.Group>
+    </St.AddForm>
   );
 };
 

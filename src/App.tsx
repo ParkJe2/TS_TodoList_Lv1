@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import "./App.css";
 import Header from "./common/Header";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
+import GlobalStyle from "./GlobalStyle";
+import { styled } from "styled-components";
 
 // Todo 아이템 타입 정의
 interface TodoItem {
@@ -28,40 +29,65 @@ function App() {
   localStorage.setItem("doneTodos", JSON.stringify(doneTodos));
 
   return (
-    <div className="layout">
-      <Header />
-      <Form todos={todos} setTodos={setTodos} />
-      <div className="list-container">
-        <h2 className="list-title">Working...🔥</h2>
-        <div className="todo-wrap">
-          {todos.map((item) => (
-            <TodoList
-              key={item.id}
-              item={item}
-              todos={todos}
-              setTodos={setTodos}
-              doneTodos={doneTodos}
-              setDoneTodos={setDoneTodos}
-              isDone={false}
-            />
-          ))}
-        </div>
-        <h2 className="list-title">Done...🥳</h2>
-        <div className="todo-wrap">
-          {doneTodos.map((item) => (
-            <TodoList
-              key={item.id}
-              item={item}
-              todos={todos}
-              setTodos={setTodos}
-              doneTodos={doneTodos}
-              setDoneTodos={setDoneTodos}
-              isDone={true}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+    <>
+      <GlobalStyle />
+      <StLayout>
+        <Header />
+        <Form todos={todos} setTodos={setTodos} />
+        <StListContainer>
+          <StListTitle>Working...🔥</StListTitle>
+          <StTodoWarp>
+            {todos.map((item) => (
+              <TodoList
+                key={item.id}
+                item={item}
+                todos={todos}
+                setTodos={setTodos}
+                doneTodos={doneTodos}
+                setDoneTodos={setDoneTodos}
+                isDone={false}
+              />
+            ))}
+          </StTodoWarp>
+          <StListTitle>Done...🥳</StListTitle>
+          <StTodoWarp>
+            {doneTodos.map((item) => (
+              <TodoList
+                key={item.id}
+                item={item}
+                todos={todos}
+                setTodos={setTodos}
+                doneTodos={doneTodos}
+                setDoneTodos={setDoneTodos}
+                isDone={true}
+              />
+            ))}
+          </StTodoWarp>
+        </StListContainer>
+      </StLayout>
+    </>
   );
 }
 export default App;
+
+export const StLayout = styled.div`
+  margin: 0 auto;
+  max-width: 1200px;
+  min-width: 800px;
+`;
+
+export const StListContainer = styled.div`
+  padding: 0 55px;
+`;
+
+export const StListTitle = styled.h2`
+  font-size: 25px;
+  font-weight: bold;
+  margin: 25px;
+`;
+
+export const StTodoWarp = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+`;
