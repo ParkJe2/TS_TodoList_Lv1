@@ -3,61 +3,53 @@ import { styled } from "styled-components";
 export const St = {
   TodoContainer: styled.div`
     width: 330px;
-    min-height: 180px;
-
-    margin-bottom: 15px;
-
-    border: 3px solid #4f4557;
-    border-radius: 10px;
-
     display: flex;
+    min-height: 180px;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
+    margin-bottom: 15px;
+    border-radius: 10px;
     word-break: break-all;
+    flex-direction: column;
+    justify-content: center;
+    border: 3px solid #4f4557;
   `,
 
   TodoTitle: styled.h2`
     font-size: 18px;
     font-weight: bold;
+    padding: 5px 10px;
     padding-bottom: 15px;
     word-break: break-all;
-    padding: 5px 10px;
   `,
 
   TodoContent: styled.div`
     font-size: 16px;
-    word-break: break-all;
     padding: 5px 10px;
+    word-break: break-all;
   `,
 
   BtnDiv: styled.div`
-    width: 85%;
-    padding: 20px 0 10px;
-
-    display: flex;
     gap: 15px;
+    width: 85%;
+    display: flex;
+    padding: 20px 0 10px;
   `,
   DelBtn: styled.button`
     width: 50%;
     height: 40px;
-
-    background-color: transparent;
-    border: 2px solid #ce1212;
-    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid #ce1212;
+    background-color: transparent;
   `,
-
   DoneBtn: styled.button`
     width: 50%;
     height: 40px;
-
-    background-color: transparent;
-    border: 2px solid #440a67;
-    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
+    border-radius: 5px;
+    border: 2px solid #440a67;
+    background-color: transparent;
   `,
 };

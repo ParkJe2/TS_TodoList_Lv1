@@ -72,8 +72,8 @@ export default App;
 
 export const StLayout = styled.div`
   margin: 0 auto;
-  max-width: 1200px;
   min-width: 800px;
+  max-width: 1200px;
 `;
 
 export const StListContainer = styled.div`
@@ -81,13 +81,13 @@ export const StListContainer = styled.div`
 `;
 
 export const StListTitle = styled.h2`
+  margin: 25px;
   font-size: 25px;
   font-weight: bold;
-  margin: 25px;
 `;
 
 export const StTodoWarp = styled.div`
+  gap: 40px;
   display: flex;
   flex-wrap: wrap;
-  gap: 40px;
 `;

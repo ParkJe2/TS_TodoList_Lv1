@@ -10,35 +10,30 @@ export const St = {
   `,
 
   Group: styled.div`
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
     padding: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
   `,
 
   Input: styled.input`
     width: 25%;
     height: 35px;
-    outline: none;
     border: none;
     border-radius: 5px;
-    margin: 0 0 5px 15px;
     padding-left: 15px;
+    margin: 0 0 5px 15px;
   `,
 
   AddBtn: styled.button`
+    color: #000;
     width: 80px;
     height: 35px;
-
     border: none;
-    border-radius: 5px;
-
     cursor: pointer;
-
-    color: #000;
     font-weight: bold;
-
+    border-radius: 5px;
     margin: 0 0 7px 25px;
     background-color: #f6bd60;
   `,
