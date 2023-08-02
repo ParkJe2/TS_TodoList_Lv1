@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { nanoid } from "nanoid";
+import { nanoid } from "nanoid/async";
+// @types/nanoid 설치하려 했으나 nanoid는 자체 유형 정의를 제공하므로 설치할 필요가 없어 패키지 중단됨 확인
 import { St } from "./FormStyle";
 
 // Todo 아이템 타입 정의
@@ -29,7 +30,7 @@ const Form: React.FC<FormProps> = ({ todos, setTodos }) => {
     setContent(e.target.value);
   };
 
-  const clickAddBtnHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const clickAddBtnHandler = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     // 불필요한 새로고침 동작 막기
 
@@ -37,19 +38,25 @@ const Form: React.FC<FormProps> = ({ todos, setTodos }) => {
     if (!content) return alert("내용을 입력해주세요");
     // 빈 값 검사
 
-    const newTodos = {
-      id: nanoid(),
-      title,
-      content,
-    };
+    try {
+      // 비동기 nanoid 생성
+      const newId = await nanoid();
+      const newTodos: TodoItem = {
+        id: newId,
+        title,
+        content,
+      };
 
-    // 새로운 Todo 아이템을 추가하여 Todo 리스트를 업데이트
-    setTodos([...todos, newTodos]);
-    // 제목 & 내용 인풋 초기화
-    setTitle("");
-    setContent("");
-    // 기존 배열(todos)을 풀고 newTodos를 더해 새로운 배열로 변환
-    // 제목, 내용 인풋값 초기화
+      // 새로운 Todo 아이템을 추가하여 Todo 리스트를 업데이트
+      setTodos([...todos, newTodos]);
+      // 제목 & 내용 인풋 초기화
+      setTitle("");
+      setContent("");
+      // 기존 배열(todos)을 풀고 newTodos를 더해 새로운 배열로 변환
+      // 제목, 내용 인풋값 초기화
+    } catch (error) {
+      console.error("nanoid 생성 실패 : ", error);
+    }
   };
 
   return (

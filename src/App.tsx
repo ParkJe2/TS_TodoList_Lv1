@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./common/Header";
 import Form from "./components/Form";
 import TodoList from "./components/TodoList";
@@ -25,8 +25,13 @@ function App() {
   });
 
   // Todo 리스트가 변경될 때마다 로컬 스토리지에 저장
-  localStorage.setItem("todos", JSON.stringify(todos));
-  localStorage.setItem("doneTodos", JSON.stringify(doneTodos));
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  useEffect(() => {
+    localStorage.setItem("doneTodos", JSON.stringify(doneTodos));
+  }, [doneTodos]);
 
   return (
     <>
